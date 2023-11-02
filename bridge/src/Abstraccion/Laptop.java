@@ -1,25 +1,32 @@
 package Abstraccion;
 
-public class Laptop extends DispositivoCasa {
+public class Laptop extends DispositivoEnCasa {
+	
+	private String edicion;
+	
     public Laptop() {
-        super();
+        super("Laptop");
+        this.edicion = "";
     }
 
+	@Override
+	public void mostrarInfo() {
+		System.out.println("Dispositivo: " + dispositivo);
+		System.out.println("Estado: " + estado);
+		System.out.println("Imagen actual: " + imagenActual);
+		System.out.println("Volumen: " + Integer.toString(volumen));
+		System.out.println("Imagen ajustada: " + Boolean.toString(ajustado));
+		System.out.println("Edición colocada: " + edicion);
+	}
+   
     @Override
-    public void realizarMostrarFoto() {
-    	fotoAjustada = true;
-        System.out.println("Mostrando foto en la laptop.");
+	public void editarImagen(String pEdicion) {
+    	if(estado.equals("Encendido")) {
+			edicion = pEdicion;
+	    	System.out.println("Se ha editado la imagen con: " + pEdicion);
+		}else {
+			System.out.println("El dispositivo no esta encendido");
+		}
     }
-
-    @Override
-    public void realizarCambiarVolumen(int pnivel) {
-    	volumen = pnivel;
-        System.out.println("Volumen de la laptop ajustado a " + pnivel);
-    }
-
-    @Override
-    public void realizarAjustarDisplay() {
-    	displayAjustado = true;
-    	System.out.println("El display de la foto se ajustó al tamaño de la pantalla de la laptop.");
-    }
+    
 }

@@ -4,6 +4,8 @@ import GUI.Lienzo;
 import GUI.Ventana;
 
 import java.awt.Color;
+import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 
 import ArtistEstrategia.Especificacion;
 import ArtistFactory.FabricaPintores;
@@ -49,8 +51,9 @@ public class main {
 		
 		Ventana ventana = new Ventana();
 		ventana.add(panelLienzo);
-		panelLienzo.pintar(new Especificacion(Color.RED, "poligonos", new int[] {1,2}, 3));
-		panelLienzo.pintar(new Especificacion(Color.BLUE, "rayas", new int[] {1,2}, 3));
+		panelLienzo.pintar(new Especificacion(Color.BLUE, "rayas", new int[] {100,100}, 5));
+		panelLienzo.pintar(new Especificacion(Color.green, "lunares", new int[] {300,400}, 5));
+		panelLienzo.pintar(new Especificacion(Color.red, "poligonos", new int[] {400,200}, 5));
 		ventana.setVisible(true);
 	}
 

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class EstrategiaPoligonos implements Estrategia{
 
-	Especificacion especPropia = new Especificacion(Color.RED, "Poligonos", new int[] {500,200}, 2);
+	Especificacion especPropia = new Especificacion(Color.GREEN, "poligonos", new int[] {500,200}, 2);
 
 	@Override
 	public void Decidir(Especificacion pEspecificaciones) {
@@ -18,13 +18,13 @@ public class EstrategiaPoligonos implements Estrategia{
 		if(pEspecificaciones.getPosicionAnterior()[0] <= 300) {
 			newPosicion[0] = getRandombetween(0, 300);
 		}else {
-			newPosicion[0] = getRandombetween(300, 600);
+			newPosicion[0] = getRandombetween(300, 500);
 		}
 		
 		if(pEspecificaciones.getPosicionAnterior()[1] <= 300) {
-			newPosicion[1] = getRandombetween(300, 600);
-		}else {
 			newPosicion[1] = getRandombetween(0, 300);
+		}else {
+			newPosicion[1] = getRandombetween(300, 500);
 		}
 		
 		especPropia.setPosicionAnterior(newPosicion);

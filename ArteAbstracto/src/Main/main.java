@@ -6,6 +6,7 @@ import GUI.Ventana;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import ArtistEstrategia.Especificacion;
 import ArtistFactory.FabricaPintores;
@@ -24,37 +25,40 @@ import ArtistObservador.ObservadorLienzo;
  * estratégico de los patrones de diseño strategy, observer, iterator y factory. los pintores iran agregando elementos a la obra y terminarán hasta que todos 
  * hayan aportando X cantidad de elementos a la pintura, donde X es configurable.
  * 
- * REGLAS:
- * 
  * El orden es el siguiente: Lunares -> Rayas -> Poligonos -> Lunares ...
- * 
- * Extrategias:
- * 
- * 
  */
 
 
 public class main {
 
+	public static ObservadorLienzo pintoresObservador = new ObservadorLienzo();
+	
 	public static void main(String[] args) {
 
-		FabricaPintores fabrica = new FabricaPintores();
-		String[] pintores = {"Lunares","Rayas","poligonos"};
-		ObservadorLienzo pintoresObservador = new ObservadorLienzo();
-		
+		int aportesMaximos = 5;
+		FabricaPintores fabrica = new FabricaPintores(aportesMaximos);
+		String[] Especialidades = {"Lunares","Rayas","poligonos"};
+		ArrayList<Pintor> pintores = new ArrayList<>();
 		Lienzo panelLienzo = new Lienzo();
 		
-		for(int i = 0; i < pintores.length; i++) {
-			Pintor pintor = fabrica.crearPintor(pintores[i], panelLienzo);
+		for(int i = 0; i < Especialidades.length; i++) {
+			Pintor pintor = fabrica.crearPintor(Especialidades[i], panelLienzo);
+			pintores.add(pintor);
 			pintoresObservador.addObserver(pintor);
 		}
 		
+		// Este algoritmo coloca más artistas, solo cambie a lunares, rayas o poligonos.
+		Pintor pintor = fabrica.crearPintor("lunares", panelLienzo);
+		pintores.add(pintor);
+		pintoresObservador.addObserver(pintor);
+		//-----------------------------------------------------------------------------
+
 		Ventana ventana = new Ventana();
 		ventana.add(panelLienzo);
-		panelLienzo.pintar(new Especificacion(Color.BLUE, "rayas", new int[] {100,100}, 5));
-		panelLienzo.pintar(new Especificacion(Color.green, "lunares", new int[] {300,400}, 5));
-		panelLienzo.pintar(new Especificacion(Color.red, "poligonos", new int[] {400,200}, 5));
 		ventana.setVisible(true);
+		
+		Clock reloj = new Clock();
+		reloj.run();
 	}
 
 }

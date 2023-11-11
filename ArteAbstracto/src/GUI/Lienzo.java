@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import javax.swing.JPanel;
 
 import ArtistEstrategia.Especificacion;
+import ArtistObservador.ObservadorLienzo;
 
 public class Lienzo extends JPanel{
 	
@@ -54,6 +55,7 @@ public class Lienzo extends JPanel{
 		}
 		
         figuras.add(figura);
+        Main.main.pintoresObservador.notificar(pEspecificacion);
         repaint();
 	}
 	

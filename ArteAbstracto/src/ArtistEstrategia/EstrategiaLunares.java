@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class EstrategiaLunares implements Estrategia{
 
-	Especificacion especPropia = new Especificacion(Color.BLUE, "Lunares", new int[] {600,100}, 5);
+	Especificacion especPropia = new Especificacion(Color.BLUE, "lunares", new int[] {500,100}, 4);
 
 	@Override
 	public void Decidir(Especificacion pEspecificaciones) {
@@ -25,7 +25,7 @@ public class EstrategiaLunares implements Estrategia{
 		int[] newPosicion = new int[2];
 		
 		if(pEspecificaciones.getPosicionAnterior()[0] <= 300) {
-			newPosicion[0] = getRandombetween(300, 600);
+			newPosicion[0] = getRandombetween(300, 500);
 		}else {
 			newPosicion[0] = getRandombetween(0, 300);
 		}
@@ -33,7 +33,7 @@ public class EstrategiaLunares implements Estrategia{
 		if(pEspecificaciones.getPosicionAnterior()[1] <= 300) {
 			newPosicion[1] = getRandombetween(0, 300);
 		}else {
-			newPosicion[1] = getRandombetween(300, 600);
+			newPosicion[1] = getRandombetween(300, 500);
 		}
 		
 		especPropia.setPosicionAnterior(newPosicion);

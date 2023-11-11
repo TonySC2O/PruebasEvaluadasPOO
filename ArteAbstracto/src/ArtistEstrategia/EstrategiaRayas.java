@@ -4,19 +4,19 @@ import java.awt.Color;
 
 public class EstrategiaRayas implements Estrategia{
 	
-	Especificacion especPropia = new Especificacion(Color.RED, "Rayas", new int[] {100,200}, 3);
+	Especificacion especPropia = new Especificacion(Color.RED, "rayas", new int[] {100,200}, 3);
 
 	@Override
 	public void Decidir(Especificacion pEspecificaciones) {
 		
 		if(pEspecificaciones.getColor().equals(Color.RED)) {
-			especPropia.setColor(Color.GREEN);
-		}
-		if(pEspecificaciones.getColor().equals(Color.GREEN)) {
 			especPropia.setColor(Color.BLUE);
 		}
-		if(pEspecificaciones.getColor().equals(Color.BLUE)) {
+		if(pEspecificaciones.getColor().equals(Color.GREEN)) {
 			especPropia.setColor(Color.RED);
+		}
+		if(pEspecificaciones.getColor().equals(Color.BLUE)) {
+			especPropia.setColor(Color.BLUE);
 		}
 		
 		//Posicion
@@ -26,11 +26,11 @@ public class EstrategiaRayas implements Estrategia{
 		if(pEspecificaciones.getPosicionAnterior()[0] <= 300) {
 			newPosicion[0] = getRandombetween(0, 300);
 		}else {
-			newPosicion[0] = getRandombetween(300, 600);
+			newPosicion[0] = getRandombetween(300, 500);
 		}
 		
 		if(pEspecificaciones.getPosicionAnterior()[1] <= 300) {
-			newPosicion[1] = getRandombetween(300, 600);
+			newPosicion[1] = getRandombetween(300, 500);
 		}else {
 			newPosicion[1] = getRandombetween(0, 300);
 		}

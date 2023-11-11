@@ -16,8 +16,20 @@ public class ObservadorLienzo implements LienzoObservable{
 
     @Override
     public void notificar(Especificacion aporte) {
-        for (Pintor observer : observadores) {
-            observer.update(aporte);
+
+        for (Pintor pintor : Main.main.pintoresObservador.getObservadores()) {
+        	pintor.setPuedePintar(false);
         }
+        
+        for (Pintor observer : observadores) {
+        	if(!observer.aportesCompletados()) {
+        		observer.update(aporte);
+        	}
+        }
+        
+    }
+    
+    public ArrayList<Pintor> getObservadores(){
+    	return observadores;
     }
 }

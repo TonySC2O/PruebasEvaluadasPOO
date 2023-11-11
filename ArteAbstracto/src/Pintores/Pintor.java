@@ -7,8 +7,11 @@ import ArtistObservador.ObservadorLienzo;
 public interface Pintor{
 	
 	ObservadorLienzo lienzo = new ObservadorLienzo();
-	Especificacion ultimoAporte = new Especificacion();
 	
 	void pintar();
 	void update(Especificacion aporte);
+	boolean puedePintar();
+	void setPuedePintar(boolean puede);
+	void setGrupoAtascado(boolean atasco);
+	boolean aportesCompletados();
 }
